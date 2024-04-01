@@ -1,4 +1,5 @@
 use std::fmt;
+use std::io::ErrorKind;
 
 /**
  * This enum is used to pass error number information in various
@@ -11,7 +12,6 @@ use std::fmt;
  * are not appropriate.
  */
 
- #[allow(dead_code)]
  #[allow(non_camel_case_types)]
  #[derive(Debug)]
 pub enum ErrorNumberType {
@@ -64,6 +64,54 @@ pub enum ErrorNumberType {
 impl fmt::Display for ErrorNumberType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{:?}", self)
+    }
+}
+
+impl From<ErrorKind> for ErrorNumberType {
+    fn from(value: ErrorKind) -> Self {
+        match value {
+            ErrorKind::NotFound => ErrorNumberType::CF_ENOENT,
+            ErrorKind::PermissionDenied => ErrorNumberType::CF_EPERM,
+            ErrorKind::ConnectionRefused => todo!(),
+            ErrorKind::ConnectionReset => todo!(),
+            //ErrorKind::HostUnreachable => todo!(),
+            //ErrorKind::NetworkUnreachable => todo!(),
+            ErrorKind::ConnectionAborted => todo!(),
+            ErrorKind::NotConnected => todo!(),
+            ErrorKind::AddrInUse => todo!(),
+            ErrorKind::AddrNotAvailable => todo!(),
+            //ErrorKind::NetworkDown => todo!(),
+            ErrorKind::BrokenPipe => todo!(),
+            ErrorKind::AlreadyExists => todo!(),
+            ErrorKind::WouldBlock => todo!(),
+            //ErrorKind::NotADirectory => todo!(),
+            //ErrorKind::IsADirectory => todo!(),
+            //ErrorKind::DirectoryNotEmpty => todo!(),
+            //ErrorKind::ReadOnlyFilesystem => todo!(),
+            //ErrorKind::FilesystemLoop => todo!(),
+            //ErrorKind::StaleNetworkFileHandle => todo!(),
+            ErrorKind::InvalidInput => todo!(),
+            ErrorKind::InvalidData => todo!(),
+            ErrorKind::TimedOut => todo!(),
+            ErrorKind::WriteZero => todo!(),
+            //ErrorKind::StorageFull => todo!(),
+            //ErrorKind::NotSeekable => todo!(),
+            //ErrorKind::FilesystemQuotaExceeded => todo!(),
+            //ErrorKind::FileTooLarge => todo!(),
+            //ErrorKind::ResourceBusy => todo!(),
+            //ErrorKind::ExecutableFileBusy => todo!(),
+            //ErrorKind::Deadlock => todo!(),
+            //ErrorKind::CrossesDevices => todo!(),
+            //ErrorKind::TooManyLinks => todo!(),
+            //ErrorKind::InvalidFilename => todo!(),
+            //ErrorKind::ArgumentListTooLong => todo!(),
+            ErrorKind::Interrupted => todo!(),
+            ErrorKind::Unsupported => todo!(),
+            ErrorKind::UnexpectedEof => todo!(),
+            ErrorKind::OutOfMemory => todo!(),
+            ErrorKind::Other => todo!(),
+            _ => todo!(),
+        }
     }
 }
 

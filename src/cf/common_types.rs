@@ -12,8 +12,8 @@ use std::io::ErrorKind;
  * are not appropriate.
  */
 
- #[allow(non_camel_case_types)]
- #[derive(Debug)]
+#[allow(non_camel_case_types)]
+#[derive(Debug)]
 pub enum ErrorNumberType {
     CF_NOTSET,
     CF_E2BIG,
@@ -118,10 +118,10 @@ impl From<ErrorKind> for ErrorNumberType {
 /**
  * This exception indicates an invalid file name was passed
  * to a file service operation. The message provides information
- * describing why the filename was invalid. 
+ * describing why the filename was invalid.
  */
 #[derive(Debug)]
- pub struct InvalidFileName {
+pub struct InvalidFileName {
     pub error_number: ErrorNumberType,
     pub message: String,
 }
@@ -132,8 +132,8 @@ impl fmt::Display for InvalidFileName {
     }
 }
 
-/** 
- * This exception indicates an invalid object reference error. 
+/**
+ * This exception indicates an invalid object reference error.
  */
 #[derive(Debug)]
 pub struct InvalidObjectReference {

@@ -1,0 +1,14 @@
+syntax = "proto3";
+package file;
+
+service File {
+    rpc size_of (SizeOfRequest) returns (SizeOfReply);
+}
+
+message SizeOfRequest {
+   string name = 1;
+}
+
+message SizeOfReply {
+    uint64 size = 1;
+}
